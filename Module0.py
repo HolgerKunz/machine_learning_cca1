@@ -19,7 +19,11 @@
 # 
 # ### 1.1. What is machine learning
 # 
-# Machine learning is a field of computer science that deals with the construction of algorithms that can learn from data and can be used to make predictions or decisions. Machine learning algorithms provide computers with the ability to search through data, look for patterns, and uses extracted information to make educated decisions without the computer being explicitly programmed with static instructions.
+# Machine learning is a field of computer science that deals with the construction 
+# of algorithms that can learn from data and can be used to make predictions or decisions. 
+# Machine learning algorithms provide computers with the ability to search through data, 
+# look for patterns, and uses extracted information to make educated decisions without the 
+# computer being explicitly programmed with static instructions.
 # 
 # ### 1.2. Machine learning examples
 # 
@@ -27,38 +31,50 @@
 # 
 # #### Recommender systems
 # 
-# Netflix is a movie rental company in the US. Netflix has a movie recommender system that changes according to the user's personal movie reantals. If a user frequently gives high ratings to comedy movies or TV shows, Netflix may want to recommend more comedy-related videos. So, one of the goals of recommender systems is to try and predict what the customers would think of the other movies based on what they rated so far. 
+# Netflix is a movie rental company in the US. Netflix has a movie recommender system that 
+# changes according to the user's personal movie reantals. If a user frequently gives high 
+# ratings to comedy movies or TV shows, Netflix may want to recommend more comedy-related 
+# videos. So, one of the goals of recommender systems is to try and predict what the customers 
+# would think of the other movies based on what they rated so far. 
 
-# In[7]:
+# In[9]:
 
 from IPython.display import display, Image
 display(Image(filename='images/movie_recommender.jpg'))
 
 
-# Out[7]:
+# Out[9]:
 
 # image file:
 
 # #### Spam filter
 # 
-# Another classical example is the email spam detection. In this case we want to build a classifier that will classify an email as "spam" or "not spam". The data in the word clouds below were taken from over thousands of "spam" or "good" emails. The goal of the classifier is to classify spam from email based on the frequency of words in the email. This is a typical text classification example 
+# Another classical example is the email spam detection. In this case we want 
+# to build a classifier that will classify an email as "spam" or "not spam". 
+# The data in the word clouds below were taken from over thousands of "spam" or "good" emails. 
+# The goal of the classifier is to classify spam from email based on the frequency of words in the email. 
+# This is a typical text classification example 
 
-# In[1]:
+# In[10]:
 
 from IPython.display import display, Image
 display(Image(filename='images/spam_wordcloud.png'))
 
 
-# Out[1]:
+# Out[10]:
 
 # image file:
 
 # ### Recognizing hand-written digits
 # 
-# This is another tipical example of machine learning classification procedure, it was one of the first learning tasks that was used to develop neural networks. Consider some handwritten digits below. The goal is to, based on an image of any of these digits, say what the digit is, to classify into the 10 digit classes.
-# Well to humans, this looks like a pretty easy task. We're pretty good at pattern recognition. It turns out it's a really difficult task to crack for computers. They're getting better and better all the time.
+# This is another tipical example of machine learning classification procedure, 
+# it was one of the first learning tasks that was used to develop neural networks. 
+# Consider some handwritten digits below. The goal is to, based on an image of any 
+# of these digits, say what the digit is, to classify into the 10 digit classes.
+# Well to humans, this looks like a pretty easy task. We're pretty good at pattern recognition. 
+# It turns out it's a really difficult task to crack for computers. They're getting better and better all the time.
 
-# In[2]:
+# In[11]:
 
 from sklearn.datasets import load_digits
 import numpy as np
@@ -77,7 +93,7 @@ print digits.data.__array_interface__['data']
 print digits.images.__array_interface__['data']
 
 
-# Out[2]:
+# Out[11]:
 
 #     (1797, 64)
 #     [  0.   0.   5.  13.   9.   1.   0.   0.   0.   0.  13.  15.  10.  15.   5.
@@ -89,17 +105,17 @@ print digits.images.__array_interface__['data']
 #     (1797, 64)
 #     (1797, 8, 8)
 #     True
-#     (4447547392, False)
-#     (4447547392, False)
+#     (4455399424, False)
+#     (4455399424, False)
 # 
 
-# In[4]:
+# In[12]:
 
 from IPython.display import display, Image
 display(Image(filename='images/digits_figure.png'))
 
 
-# Out[4]:
+# Out[12]:
 
 # image file:
 
@@ -108,12 +124,6 @@ display(Image(filename='images/digits_figure.png'))
 # 
 # Even though each sample has data that is inherently two-dimensional, the data matrix flattens
 # this 2D data into a **single vector**, which can be contained in one **row** of the data matrix.
-
-# ### Face recognition
-# 
-# 
-# ### Classifying tissue samples
-# So the next example comes from medicine, classifying a tissue sample into one of several cancer classes based on sample features.
 
 # ## Learning activity 2: Understand difference between supervised and unsupervised problems [10 min]
 # 
@@ -127,42 +137,58 @@ display(Image(filename='images/digits_figure.png'))
 # 
 # ### Supervised and unsupervised problems
 # 
-# A classifier is a system that inputs (typically) a vector of discrete and/or continuous predictor values and outputs a single discrete value, the class. The output variable goes by various names: Y, dependent variable, response or target. The predictor measurments are also called inputs, regressors, covariates, features, or independent variables.
+# A classifier is a system that inputs a vector of discrete and/or continuous predictor 
+# values and outputs a single discrete value, the class. The output variable goes by various names: 
+# Y, dependent variable, response or target. The predictor measurments are also called inputs, 
+# regressors, covariates, features, or independent variables.
 # 
-# Machine learning tasks are typically classified into three broad categories, depending on the nature of the learning "signal" or "feedback" available to a learning system. These are:
+# Machine learning tasks are typically classified into three broad categories, 
+# depending on the nature of the learning "signal" or "feedback" available to a learning system. These are:
 # 
-# - Supervised learning. The computer is presented with example inputs and their desired outputs, given by a "teacher", and the goal is to learn a general rule that maps inputs to outputs.
+# - Supervised learning (classification). The data is presented to the computer with example inputs and their desired outputs (labels). Samples belong to discrete lasses and we want to learn a general rule from labeled data how to predict the class of unlabeled data. Finally, evaluation functions allow you to distinguish if the learner has made good predictions by evaluating the classifie (e.g., whether the spam filter correctly classifies previously unseen emails as spam or not spam). 
 # 
-# - Unsupervised learning, no labels are given to the learning algorithm, leaving it on its own to find structure in its input. Unsupervised learning can be a goal in itself (discovering hidden patterns in data) or a means towards an end.
+# - Unsupervised learning. No labels are given to the learning algorithm. The goal is to discover patterns in the data (clustering) or to determine the distribution of data within the input space (density estimation). Dimensionality reduction is also considered a unsupervised learning algorithm. 
 
-# In[6]:
+# This is a flow chart below was created by scikit-learn contributor [https://github.com/amueller] Andreas Mueller. The flow chart gives a nice summary of 
+# which algorithms to choose in various situations!
+
+# In[13]:
 
 #Show scikit-learn cheat sheet: (http://peekaboo-vision.blogspot.co.uk/2013/01/machine-learning-cheat-sheet-for-scikit.html)
 from IPython.display import display, Image
 display(Image(filename='images/drop_shadows_background.png'))
 
 
-# Out[6]:
+# Out[13]:
 
 # image file:
 
-# The idea of supervised learning, in kindergarten of a teacher trying to teach a child to discriminate between what, say, a house is and a bike. So he might show the child some examples of what a house looks like. And here's some examples of what a bike looks like.
-# He tells Johnny this and shows him examples of each of the classes. And the child then learns, oh I see. Houses got sort of square edges, and a bike has got some more rounded edges, et cetera. That's supervised learning, because he's been given examples of label training observations. He's been supervised. The Y there is given and the child tries to learn to classify the two objects based on the features, the X's. Finally we need to distinguish if the learner has made good predictions by evaluating the classifie (e.g., whether the spam filter correctly classifies previously unseen emails as spam or not spam).
+# Unsupervised learning is an important preprocessor for supervised learning. 
+# It's often useful to try to organize your features, choose features based on the X's themselves, 
+# and then use those processed or chosen features as input into supervised learning. 
+# It is also a lot more common to collect data which is unlabeled. 
 # 
-# In unsupervised learning, was not given examples of what a house and a bike was. He just sees on the ground lots of things. He sees maybe some houses, some bikes, some other things. And so this data is unlabeled. There's no Y.
-# So the problem there now is for the child, it's unsupervised, to try to organize in his own mind the common patterns of what he sees.
-# He may look at the objects and say, oh these three things are similar to each other because they have common features.
-# These other objects, are similar to each other, because I see some commonality. And that brings the idea of trying to group observations by similarity of features.
-# So more formally, there's no outcome variable measure, just a set of predictors. And the objective is more fuzzy. It's not just to predict Y, because there is no Y. It's rather to learn about how the data is organized, and to find which features are important for the organization of the data. Hierarchical clustering is an important technique for unsupervised learning. One of the challenges is it's hard to know how well you're doing. There's no gold standard. There's no Y. 
-# But nonetheless, it's an extremely important area. One reason is that the idea of unsupervised learning is an important preprocessor for supervised learning. It's often useful to try to organize your features, choose features based on the X's themselves, and then use those processed or chosen features as input into supervised learning. And the last point is that it's a lot easier, it's a lot more common to collect data which is unlabeled. Because on the web, for example, if you look at movie
-# reviews, a computer algorithm can just scan the web and grab reviews. Figuring out whether review, on the other hand, is positive
-# or negative often takes human intervention. So it's much harder and costly to label data. Much easier just to collect unsupervised, unlabeled data.
+# ### Trainning vs discovery dataset
+# Machine learning is about learning some properties of a data set and applying them to new data. 
+# This is why a common practice in machine learning to evaluate an algorithm 
+# is to split the data at hand into two sets, one that we call the training set 
+# on which we learn data properties and one that we call the testing set on which we test these properties.
 
 # ### Quiz: Is this a suppervised or an unsupervised problem?
 # 
+# In both cases you are given data, but in one case you have labled data and in the other you have unlabled data.
+# 
+# - 1) Face recognition
+# - 2) Website for comparison-shopping agents
+# - 3) Speach reconition
+# - 4) Classifying tissue samples
+# - 5) Search engine
+# - 6) Selecting features from Google's Street View photographic database (trees, pedestrians, cars, traffic lights, lane markers, etc)
+# 
+# 
 
-### Learning activity 3: Scikit learn interface [30 min]
-
+# #Learning activity 3: Scikit learn interface [30 min] 
+# 
 # Learning outcomes:
 # 
 # - Understand basics of data manipulation with numpy arrays
@@ -172,7 +198,7 @@ display(Image(filename='images/drop_shadows_background.png'))
 # - Know how to load data into scikit-learn
 # 
 # - Understand data format and shape within scikit-learn
-
+# 
 # ##  Data manipulation with Numpy with simple example exercises
 # 
 # Being able to manipulate numpy arrays is an important part of doing machine learning in Python. Numpy provides high-performance vector, matrix and higher-dimensional data structures for calculations in Python. 
@@ -181,7 +207,7 @@ display(Image(filename='images/drop_shadows_background.png'))
 # 
 # To use numpy need to import the module:
 
-# In[8]:
+# In[14]:
 
 import numpy as np
 
@@ -190,40 +216,47 @@ import numpy as np
 # 
 # There are a number of ways to create numpy arrays. For example
 
-# In[21]:
+# In[15]:
 
 # Generate a vector from a Python list 
 X = np.array([1,2,3,4])
 print X
 
 
-# Out[21]:
+# Out[15]:
 
 #     [1 2 3 4]
 # 
 
-# In[22]:
+# In[16]:
 
 # Generate a random array
 R = np.random.random((10, 5))  # a 10 x 5 matrix
 print R
 
 
-# Out[22]:
+# Out[16]:
 
-#     [[ 0.38791387  0.32526028  0.14153182  0.71865651  0.18970824]
-#      [ 0.19354106  0.71395833  0.58767     0.68926203  0.27404207]
-#      [ 0.21817474  0.52303377  0.85382153  0.03815955  0.39870863]]
+#     [[ 0.96673763  0.2130024   0.28761298  0.13796016  0.17302061]
+#      [ 0.74725261  0.85271765  0.91141793  0.45485285  0.70213601]
+#      [ 0.28078397  0.8613403   0.54537679  0.29526851  0.71799205]
+#      [ 0.3988181   0.50601354  0.73678075  0.65962224  0.41972515]
+#      [ 0.38115451  0.79286497  0.62552811  0.18160768  0.01581078]
+#      [ 0.83570284  0.08333593  0.49199635  0.29631227  0.15591427]
+#      [ 0.79351297  0.43624988  0.79053603  0.55551422  0.72260809]
+#      [ 0.49691926  0.17388796  0.17247526  0.21384287  0.67159634]
+#      [ 0.78009506  0.23305675  0.03384673  0.36730243  0.86913374]
+#      [ 0.1673632   0.87108288  0.39531035  0.64140693  0.13980584]]
 # 
 
-# In[39]:
+# In[17]:
 
 # Generate a matrix from a Python nested list
 M = np.array([[1, 2], [3, 4]])
 print M
 
 
-# Out[39]:
+# Out[17]:
 
 #     [[1 2]
 #      [3 4]]
@@ -233,7 +266,7 @@ print M
 # 
 # The shape and the size methods can be applied to numpy ndarray objects:
 
-# In[42]:
+# In[18]:
 
 #We can get information on the shape of the generated arrays
 print "Shape:"
@@ -256,15 +289,15 @@ print M.itemsize
 print M.ndim
 
 
-# Out[42]:
+# Out[18]:
 
 #     Shape:
 #     (4,)
-#     (3, 5)
+#     (10, 5)
 #     (2, 2)
 #     Size:
 #     4
-#     15
+#     50
 #     4
 #     np.shape and np.size:
 #     (2, 2)
@@ -277,7 +310,7 @@ print M.ndim
 # 
 # We can generate longer arrays automatically using functions, instead of entering the data manually with Python lists. Some of the more common are:
 
-# In[38]:
+# In[19]:
 
 #More ways to create numpy arrays
 
@@ -293,7 +326,7 @@ print np.linspace(0, 100, 11)
 print np.logspace(0, 100, 11, base=10)
 
 
-# Out[38]:
+# Out[19]:
 
 #     [0 1 2 3 4 5 6 7 8 9]
 #     [ -1.00000000e+00  -9.00000000e-01  -8.00000000e-01  -7.00000000e-01
@@ -311,7 +344,7 @@ print np.logspace(0, 100, 11, base=10)
 # 
 # We can index elements in an array using the square bracket and indices:
 
-# In[71]:
+# In[20]:
 
 # X is a 3 x 5 matrix
 X = np.random.random((3,5)) 
@@ -336,16 +369,16 @@ print "single element of a vector : %d" %v[1]
 #print v[:,1] #this does not work!
 
 
-# Out[71]:
+# Out[20]:
 
-#     [[ 0.89847285  0.60576358  0.26342986  0.72932682  0.38711389]
-#      [ 0.37799779  0.88391218  0.99682069  0.83695834  0.91059773]
-#      [ 0.56084463  0.83667455  0.00575926  0.3639832   0.21046016]]
-#     0.898472850998
-#     [ 0.37799779  0.88391218  0.99682069  0.83695834  0.91059773]
-#     row:   0.377998   0.883912   0.996821   0.836958   0.910598
-#     [ 0.60576358  0.88391218  0.83667455]
-#     Column:   0.605764   0.883912   0.836675
+#     [[ 0.74742437  0.58253544  0.03546311  0.57790876  0.96527153]
+#      [ 0.13218282  0.2117342   0.45278113  0.78564846  0.32065856]
+#      [ 0.80818378  0.33522893  0.90458834  0.75044079  0.55208418]]
+#     0.747424372487
+#     [ 0.13218282  0.2117342   0.45278113  0.78564846  0.32065856]
+#     row:   0.132183   0.211734   0.452781   0.785648   0.320659
+#     [ 0.58253544  0.2117342   0.33522893]
+#     Column:   0.582535   0.211734   0.335229
 #     2
 #     single element of a vector : 2
 # 
@@ -354,7 +387,7 @@ print "single element of a vector : %d" %v[1]
 # 
 # Index slicing is the technical name for the syntax M[lower:upper:step] to extract part of an array:
 
-# In[90]:
+# In[21]:
 
 A = np.array([1,2,3,4,5])
 
@@ -368,7 +401,7 @@ print A[:3]
 print A[3:] 
 
 
-# Out[90]:
+# Out[21]:
 
 #     [2 3]
 #     [1 2 3]
@@ -377,7 +410,7 @@ print A[3:]
 
 # Negative indices counts from the end of the array (positive index from the begining):
 
-# In[95]:
+# In[22]:
 
 # last element
 print A[-1] 
@@ -386,17 +419,15 @@ print A[-1]
 print A[-3:] 
 
 
-# Out[95]:
+# Out[22]:
 
-#     [40 41 42 43 44]
-#     [[20 21 22 23 24]
-#      [30 31 32 33 34]
-#      [40 41 42 43 44]]
+#     5
+#     [3 4 5]
 # 
 
 # Slicing applies the same way to multidimensional arrays
 
-# In[96]:
+# In[23]:
 
 A = np.array([[n+m*10 for n in range(5)] for m in range(5)])
 print A
@@ -405,7 +436,7 @@ print A
 print A[1:4, 1:4]
 
 
-# Out[96]:
+# Out[23]:
 
 #     [[ 0  1  2  3  4]
 #      [10 11 12 13 14]
@@ -421,44 +452,44 @@ print A[1:4, 1:4]
 # 
 # We can assign new values to elements in an array using indexing:
 
-# In[66]:
+# In[24]:
 
 M = np.array([[1, 2], [3, 4]])
 print M
 
 
-# Out[66]:
+# Out[24]:
 
 #     [[1 2]
 #      [3 4]]
 # 
 
-# In[67]:
+# In[25]:
 
 M[0,0] = 1100
 print M
 
 
-# Out[67]:
+# Out[25]:
 
 #     [[1100    2]
 #      [   3    4]]
 # 
 
-# In[68]:
+# In[26]:
 
 # also works for rows and columns
 M[1,:] = 0
 print M
 
 
-# Out[68]:
+# Out[26]:
 
 #     [[1100    2]
 #      [   0    0]]
 # 
 
-# In[69]:
+# In[27]:
 
 #also works for 1D arrays
 v = np.array([1,2,3,4])
@@ -466,12 +497,12 @@ v[0] = 30
 print v
 
 
-# Out[69]:
+# Out[27]:
 
 #     [30  2  3  4]
 # 
 
-# In[70]:
+# In[28]:
 
 #Create a sparce matrix (an array with lots of zeros)
 #Replace values smaller than 0.7
@@ -480,23 +511,23 @@ X[X < 0.7] = 0
 print X
 
 
-# Out[70]:
+# Out[28]:
 
-#     [[ 0.          0.          0.          0.          0.        ]
-#      [ 0.          0.          0.          0.          0.83901515]
-#      [ 0.          0.          0.          0.94267514  0.        ]
-#      [ 0.          0.78652884  0.82929059  0.97230065  0.        ]
-#      [ 0.96569135  0.          0.          0.87899507  0.        ]
-#      [ 0.          0.85387237  0.          0.          0.        ]
-#      [ 0.77466504  0.          0.          0.          0.        ]
-#      [ 0.73269898  0.80778151  0.          0.          0.        ]
-#      [ 0.          0.7707395   0.          0.          0.        ]
-#      [ 0.87037053  0.79619028  0.82494542  0.          0.        ]]
+#     [[ 0.          0.78187846  0.          0.          0.        ]
+#      [ 0.          0.          0.          0.83904368  0.99835835]
+#      [ 0.          0.          0.82948543  0.          0.        ]
+#      [ 0.96471726  0.          0.          0.          0.84235955]
+#      [ 0.          0.          0.97234209  0.          0.76122466]
+#      [ 0.          0.          0.82349762  0.73373833  0.        ]
+#      [ 0.          0.96470602  0.          0.          0.79832002]
+#      [ 0.86191236  0.          0.87785347  0.          0.92161389]
+#      [ 0.88084492  0.84486546  0.          0.95243958  0.        ]
+#      [ 0.          0.77730676  0.          0.          0.        ]]
 # 
 
 # We get an error if we try to assign the wrong data type to an array
 
-# In[73]:
+# In[29]:
 
 #Using the dtype we can see what type the data of an array has
 X.dtype
@@ -505,13 +536,13 @@ X.dtype
 M[0,0] = "hello"
 
 
-# Out[73]:
+# Out[29]:
 
 
     ---------------------------------------------------------------------------
     ValueError                                Traceback (most recent call last)
 
-    <ipython-input-73-6fde34bc5a77> in <module>()
+    <ipython-input-29-6fde34bc5a77> in <module>()
           3 
           4 #Try to assign a string to the wrong type
     ----> 5 M[0,0] = "hello"
@@ -522,28 +553,19 @@ M[0,0] = "hello"
 
 # If we want, we can explicitly define the type of the array data when we create it, using the dtype keyword argument. Common type that can be used with dtype are: int, float, complex, bool, object. We can also explicitly define the bit size of the data types, for example: int64, int16, float128, complex128.
 
-# In[88]:
+# In[30]:
 
 M = np.array([[1, 2], [3, 14]], dtype=complex)
 print M
 
-M = np.array([["hello", 2], [3, 14]], dtype=str)
-print M
-M[0,0] = 'inesinha'
-print M
 
-
-# Out[88]:
+# Out[30]:
 
 #     [[  1.+0.j   2.+0.j]
 #      [  3.+0.j  14.+0.j]]
-#     [['hello' '2']
-#      ['3' '14']]
-#     [['inesi' '2']
-#      ['3' '14']]
 # 
 
-# In[79]:
+# In[31]:
 
 # Transposing an array
 X = np.random.random((3,5))
@@ -551,19 +573,19 @@ print X
 print X.T
 
 
-# Out[79]:
+# Out[31]:
 
-#     [[ 0.95213229  0.47237824  0.08949783  0.27099196  0.0086144 ]
-#      [ 0.67215123  0.84953544  0.57780725  0.36871919  0.08161305]
-#      [ 0.20596178  0.4243674   0.88596755  0.56235655  0.72060864]]
-#     [[ 0.95213229  0.67215123  0.20596178]
-#      [ 0.47237824  0.84953544  0.4243674 ]
-#      [ 0.08949783  0.57780725  0.88596755]
-#      [ 0.27099196  0.36871919  0.56235655]
-#      [ 0.0086144   0.08161305  0.72060864]]
+#     [[ 0.25332356  0.78561226  0.46216555  0.90728557  0.05107888]
+#      [ 0.18390764  0.77951414  0.29671559  0.15307562  0.73360408]
+#      [ 0.24997955  0.22796432  0.67865686  0.39685587  0.75265091]]
+#     [[ 0.25332356  0.18390764  0.24997955]
+#      [ 0.78561226  0.77951414  0.22796432]
+#      [ 0.46216555  0.29671559  0.67865686]
+#      [ 0.90728557  0.15307562  0.39685587]
+#      [ 0.05107888  0.73360408  0.75265091]]
 # 
 
-# In[51]:
+# In[32]:
 
 # Turning a row vector into a column vector
 y = np.linspace(0, 100, 5)
@@ -574,7 +596,7 @@ print y
 print y[:, np.newaxis]
 
 
-# Out[51]:
+# Out[32]:
 
 #     [   0.   25.   50.   75.  100.]
 #     [[   0.]
@@ -631,14 +653,13 @@ print y[:, np.newaxis]
 
 # ## Load an example dataset using scikit-learn: The iris dataset
 # 
-# As an example of a simple dataset, we're going to take a look at the
-# iris data stored by scikit-learn.
-# The data consists of measurements of three different species of irises.
-# There are three species of iris in the dataset, which we can picture here:
+# scikit.learn has become one of the most popular machine learning packages in Python. It often calls external C-code making the execuation considerably quick. It also with a few standard datasets, 
+# we will use the iris dataset in this example. 
+# The iris dataset is one of most well-known toy datasets for machine learning.
 # 
-# scikits.learn has become one of the most popular machine learning packages in Python. It has a most of the standard machine learning algorithms built-in and often calls faster external C-code that can make execuation fairly quick.
+# There are three species of iris in the dataset (see figure below). 
 
-# In[15]:
+# In[33]:
 
 from IPython.core.display import Image, display
 display(Image(filename='images/iris_setosa.jpg'))
@@ -651,7 +672,7 @@ display(Image(filename='images/iris_virginica.jpg'))
 print "Iris Virginica"
 
 
-# Out[15]:
+# Out[33]:
 
 # image file:
 
@@ -674,14 +695,13 @@ print "Iris Virginica"
 # 
 # **If we want to design an algorithm to recognize iris species, what might the features be? What might the labels be?**
 # 
-# Remember: we need a 2D data array of size `[n_samples x n_features]`, and a 1D label array of size `n_samples`.
+# We will need a matrix of `[samples x features]`, and a vector `samples`.
 # 
-# - What would the `n_samples` refer to?
+# - What would the `samples` refer to?
 # 
-# - What might the `n_features` refer to?
+# - What might the `features` refer to?
 # 
-# Remember that there must be a **fixed** number of features for each sample, and feature
-# number ``i`` must be a similar kind of quantity for each sample.
+# - What are the X (predictor) and Y (target/response) variables? 
 
 # ### Loading the Iris Data with Scikit-Learn
 # 
@@ -703,49 +723,40 @@ print "Iris Virginica"
 #   
 # ``scikit-learn`` embeds a copy of the iris CSV file along with a helper function to load it into numpy arrays:
 
-# In[122]:
+# In[34]:
 
 from sklearn.datasets import load_iris
 iris = load_iris()
 
 
-# This load in one of most well-known toy datasets for machine learning. It's useful since it's very easy to get good performance on. Each row contains one flower instance with information on it's petal and sepal measurements. It's flower is classified into 1 of 3 species.
-# 
-# The result is a ``Bunch()`` object, which is basically an enhanced dictionary which contains the data.
-# The ``Bunch()`` object, Dictionary-like object, the interesting attributes are: ‘data’, the data to learn, ‘target’, the classification labels, ‘target_names’, the meaning of the labels, ‘feature_names’, the meaning of the features, and ‘DESCR’, the full description of the dataset.
-# 
-# **Note that bunch objects are not required for performing learning in scikit-learn, they are simply a convenient container for the numpy arrays which *are* required**
+# The result is the ``iris`` object, which is basically an dictionary-like object which contains the data.
+# Few interesting attributes are: 
 
-# The iris dataset is a classic and very easy multi-class classification dataset.
-# Classes 	3
-# Samples per class 	50
-# Samples total 	150
-# Dimensionality 	4
-# Features 	real, positive
-
-# This data sets consists of 3 different types of irises’ (Setosa, Versicolour, and Virginica) petal and sepal length, stored in a 150x4 numpy.ndarray
-# 
-# The rows being the samples and the columns being: Sepal Length, Sepal Width, Petal Length and Petal Width.
-
-# In[123]:
+# In[37]:
 
 iris.keys()
 
 
-# Out[123]:
+# Out[37]:
 
 #     ['target_names', 'data', 'target', 'DESCR', 'feature_names']
 
-# In[103]:
+# - ‘data’, a (samples x features) array with the data to learn 
+# - ‘target’, the classification labels
+# - ‘target_names’, the meaning of the labels
+# - ‘feature_names’, the meaning of the features
+# - ‘DESCR’, the full description of the dataset.
 
-n_samples, n_features = iris.data.shape
-print (n_samples, n_features)
-print iris.data[:10]
+# ``iris.data`` gives you the features that can be used to classify the iris sample:
+
+# In[42]:
+
+#subset of first 10 rows:
+print iris.data[:10,]
 
 
-# Out[103]:
+# Out[42]:
 
-#     (150, 4)
 #     [[ 5.1  3.5  1.4  0.2]
 #      [ 4.9  3.   1.4  0.2]
 #      [ 4.7  3.2  1.3  0.2]
@@ -758,71 +769,141 @@ print iris.data[:10]
 #      [ 4.9  3.1  1.5  0.1]]
 # 
 
-# Let’s say you are interested in the samples 10, 25, and 50, and want to know their class name.
+# This iris data is stored in the ``.data member``, which is a n_samples, n_features array. Each row contains one flower instance with information on it's petal and sepal measurments, stored in a 150x4 ``numpy.ndarray`` 
 
-# In[104]:
+# In[43]:
 
-iris.target[[50,20]]
-
-
-# Out[104]:
-
-#     array([1, 0])
-
-# In[106]:
-
-print iris.target
-print iris.target[45:55]
-print iris.target_names[iris.target[45:55]] #an array was used in-place of an index
+#samples x features
+n_samples, n_features = iris.data.shape
+print (n_samples, n_features)
 
 
-# Out[106]:
+# Out[43]:
 
-#     [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-#      0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-#      1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
-#      2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-#      2 2]
-#     [0 0 0 0 0 1 1 1 1 1]
-#     ['setosa' 'setosa' 'setosa' 'setosa' 'setosa' 'versicolor' 'versicolor'
-#      'versicolor' 'versicolor' 'versicolor']
+#     (150, 4)
 # 
 
-# In[107]:
+# The feature names correspond to the petal and septal measurments and are given by ``.feature_names``:
 
-print iris.data.shape
+# In[47]:
+
+#meaning of the features
+print iris.feature_names
+
+
+# Out[47]:
+
+#     ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+# 
+
+# Each flower is labled with 3 different types of irises’ (Setosa, Versicolour, and Virginica). The labels are stored in the ``.target`` member or the iris dataset: 
+
+# In[48]:
+
+#target (numeric)
+print iris.target
+
+#shape of arrays
 print iris.target.shape
 
 
-# Out[107]:
-
-#     (150, 4)
-#     (150,)
-# 
-
-# In[108]:
-
-print iris.target
-
-
-# Out[108]:
+# Out[48]:
 
 #     [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 #      0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 #      1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
 #      2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
 #      2 2]
+#     (150,)
 # 
 
-# In[121]:
+# The names corresponding to each target feature is given by ``.target_names``. 
 
+# In[44]:
+
+#meaning of the target labels 
 print iris.target_names
+print iris.target_names[iris.target[:10]] #an array was used in-place of an index
 
 
-# Out[121]:
+# Out[44]:
 
 #     ['setosa' 'versicolor' 'virginica']
+#     ['setosa' 'setosa' 'setosa' 'setosa' 'setosa' 'setosa' 'setosa' 'setosa'
+#      'setosa' 'setosa']
 # 
+
+# In[46]:
+
+#Full description of the dataset
+print iris.DESCR
+
+
+# Out[46]:
+
+#     Iris Plants Database
+#     
+#     Notes
+#     -----
+#     Data Set Characteristics:
+#         :Number of Instances: 150 (50 in each of three classes)
+#         :Number of Attributes: 4 numeric, predictive attributes and the class
+#         :Attribute Information:
+#             - sepal length in cm
+#             - sepal width in cm
+#             - petal length in cm
+#             - petal width in cm
+#             - class:
+#                     - Iris-Setosa
+#                     - Iris-Versicolour
+#                     - Iris-Virginica
+#         :Summary Statistics:
+#         ============== ==== ==== ======= ===== ====================
+#                         Min  Max   Mean    SD   Class Correlation
+#         ============== ==== ==== ======= ===== ====================
+#         sepal length:   4.3  7.9   5.84   0.83    0.7826
+#         sepal width:    2.0  4.4   3.05   0.43   -0.4194
+#         petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)
+#         petal width:    0.1  2.5   1.20  0.76     0.9565  (high!)
+#         ============== ==== ==== ======= ===== ====================
+#         :Missing Attribute Values: None
+#         :Class Distribution: 33.3% for each of 3 classes.
+#         :Creator: R.A. Fisher
+#         :Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+#         :Date: July, 1988
+#     
+#     This is a copy of UCI ML iris datasets.
+#     http://archive.ics.uci.edu/ml/datasets/Iris
+#     
+#     The famous Iris database, first used by Sir R.A Fisher
+#     
+#     This is perhaps the best known database to be found in the
+#     pattern recognition literature.  Fisher's paper is a classic in the field and
+#     is referenced frequently to this day.  (See Duda & Hart, for example.)  The
+#     data set contains 3 classes of 50 instances each, where each class refers to a
+#     type of iris plant.  One class is linearly separable from the other 2; the
+#     latter are NOT linearly separable from each other.
+#     
+#     References
+#     ----------
+#        - Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+#          Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions to
+#          Mathematical Statistics" (John Wiley, NY, 1950).
+#        - Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+#          (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+#        - Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+#          Structure and Classification Rule for Recognition in Partially Exposed
+#          Environments".  IEEE Transactions on Pattern Analysis and Machine
+#          Intelligence, Vol. PAMI-2, No. 1, 67-71.
+#        - Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE Transactions
+#          on Information Theory, May 1972, 431-433.
+#        - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al"s AUTOCLASS II
+#          conceptual clustering system finds 3 classes in the data.
+#        - Many, many more ...
+#     
+# 
+
+# ### Ploting the iris dataset
 
 # In[120]:
 
@@ -895,104 +976,62 @@ plt.ylabel('Petal width')
 
 # ## Classify the iris dataset
 # 
-# 
-
-# ### KNN
-
 # Scikits-learn has a very common interface for all it's models making it easy to use and switch between models. The two major stages are 1) fit where we fit a model, or learn from the data and 2) predict where we extrapolate from what we learned.
+# 
+# ### KNN
+# 
+# The simplest possible classifier is the nearest neighbor: given a new observation, take the label of the training samples closest to it in n-dimensional space, where n is the number of features in each sample. The k-nearest neighbors classifier internally uses an algorithm based on ball trees to represent the samples it is trained on.
 
-# In[89]:
+# In[68]:
 
 from sklearn import neighbors
-X, y = iris.data, iris.target
-knn = neighbors.KNeighborsClassifier(n_neighbors=1)
-knn.fit(X, y)
+knn = neighbors.KNeighborsClassifier()
+knn.fit(iris.data, iris.target) 
 
 # What kind of iris has 3cm x 5cm sepal and 4cm x 2cm petal?
-print iris.target_names[knn.predict([[3, 5, 4, 2]])]
+predicted = knn.predict([[3, 5, 4, 2]])
+print predicted 
+
+#what are the names
+print iris.target_names[predicted]
+
+#more predictions
+print iris.target_names[knn.predict([[0.1, 0.2, 0.3, 0.4],
+                                     [7, 0.2, 4, 10],
+                                     [3, 4, 5, 2]
+                                     ])]
 
 
-# Out[89]:
+# Out[68]:
 
-#     ['virginica']
+#     [1]
+#     ['versicolor']
+#     ['setosa' 'virginica' 'versicolor']
 # 
 
-# ### SVM
+# When experimenting with learning algorithms, it is important not to test the 
+# prediction of an estimator on the data used to fit the estimator. Indeed, 
+# with the kNN estimator, we would always get perfect prediction on the training set.
 
-# ### Cross validation
+# In[69]:
 
-# In[56]:
-
-from sklearn.cross_validation import train_test_split
-X_train, X_test, y_train, y_test = cross_validation.train_test_split(iris.data, iris.target, test_size=0.4, random_state=0)
-
-knn = neighbors.KNeighborsClassifier(n_neighbors=1)
-knn.fit(X_train, y_train)
-predicted = knn.predict(X_test)
-
-
-# Out[56]:
+perm = np.random.permutation(iris.target.size)
+iris.data = iris.data[perm]
+iris.target = iris.target[perm]
+knn.fit(iris.data[:100], iris.target[:100]) 
+knn.score(iris.data[100:], iris.target[100:]) 
 
 
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
+# Out[69]:
 
-    <ipython-input-56-52b714b9757c> in <module>()
-          1 from sklearn.cross_validation import train_test_split
-    ----> 2 X_train, X_test, y_train, y_test = cross_validation.train_test_split(iris.data, iris.target, test_size=0.4, random_state=0)
-          3 
-          4 knn = neighbors.KNeighborsClassifier(n_neighbors=1)
-          5 knn.fit(X_train, y_train)
-
-
-    NameError: name 'cross_validation' is not defined
-
-
-# In[57]:
-
-from sklearn import metrics
-print metrics.classification_report(y_test, predicted)
-print metrics.confusion_matrix(y_test, predicted)
-print metrics.f1_score(y_test, predicted)
-
-
-# Out[57]:
-
-
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-57-b61916a5693b> in <module>()
-          1 from sklearn import metrics
-    ----> 2 print metrics.classification_report(y_test, predicted)
-          3 print metrics.confusion_matrix(y_test, predicted)
-          4 print metrics.f1_score(y_test, predicted)
-
-
-    NameError: name 'y_test' is not defined
-
-
-# In[58]:
-
-from sklearn.cross_validation import cross_val_score
-
-scores = cross_val_score(knn, iris.data, iris.target, cv=5)
-
-
-# Out[58]:
-
-#     /Users/santia01/anaconda/lib/python2.7/site-packages/sklearn/neighbors/classification.py:131: NeighborsWarning: kneighbors: neighbor k+1 and neighbor k have the same distance: results will be dependent on data order.
-#       neigh_dist, neigh_ind = self.kneighbors(X)
-#     /Users/santia01/anaconda/lib/python2.7/site-packages/sklearn/neighbors/classification.py:131: NeighborsWarning: kneighbors: neighbor k+1 and neighbor k have the same distance: results will be dependent on data order.
-#       neigh_dist, neigh_ind = self.kneighbors(X)
 #     /Users/santia01/anaconda/lib/python2.7/site-packages/sklearn/neighbors/classification.py:131: NeighborsWarning: kneighbors: neighbor k+1 and neighbor k have the same distance: results will be dependent on data order.
 #       neigh_dist, neigh_ind = self.kneighbors(X)
 # 
 
-# In[ ]:
+#     0.97999999999999998
 
-
-
+# ### Quiz question:
+# Why did we use a random permutation?
 
 # # Further reading
 # 
@@ -1000,3 +1039,4 @@ scores = cross_val_score(knn, iris.data, iris.target, cv=5)
 #     http://scipy.org/Tentative_NumPy_Tutorial
 #     http://scipy.org/NumPy_for_Matlab_Users - A Numpy guide for MATLAB users.
 #     http://scikit-learn.org/stable/supervised_learning.html#supervised-learning - scikit-learn supervised learning page
+#     http://en.wikipedia.org/wiki/Iris_flower_data_set - More information on the Iris dataset
